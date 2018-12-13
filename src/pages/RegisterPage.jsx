@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { login } from 'actions/authAction';
 
-export default class HomePage extends Component {
+export default class RegisterPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,14 +38,17 @@ export default class HomePage extends Component {
           <section className="section-login form">
             <form className="form__login form--vertical" onSubmit={this.handleSubmit}>
               <div className="form__header">
-                <span className="form__header__title">Login form</span>
+                <span className="form__header__title">Register Form</span>
                 <span className="form__header__close-button"></span>
               </div>
               <div className="form__main">
-                <input type="text" className="form__input mgb-20" placeholder="Email..." name="username" value={username} onChange={this.handleChange} />
-                <input type="password" className="form__input" placeholder="Password..." name="password" value={password} onChange={this.handleChange} />
-                <label className="form__error">{error}</label>
-                <input type="submit" className="form__button" />
+                <p className="form__input-label">Email</p>
+                <input type="text" className="form__input" placeholder="Please input email" name="username" value={username} onChange={this.handleChange} />
+                <p className="form__input-label">Password</p>
+                <input type="password" className="form__input" placeholder="Please input password" name="password" value={password} onChange={this.handleChange} />
+                <p className="form__input-label">Confirm password</p>
+                <input type="password" className="form__input" placeholder="Please input confirm password" name="confirm_password" value={password} onChange={this.handleChange} />
+                <input type="submit" className="form__button mgt-30" value="Register" />
               </div>
             </form>
           </section>

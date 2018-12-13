@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomePage, LoginPage, NotFoundPage, ProductPage } from 'pages';
+import { HomePage, LoginPage, NotFoundPage, ProductPage, RegisterPage } from 'pages';
 import { Temps } from 'components';
 import { isAuth } from 'actions/authAction';
 
@@ -12,16 +12,16 @@ const routes = [
     main: () => <HomePage />
   },
   {
-    path: '/temps',
-    exact: false,
-    auth: true,
-    main: Temps
-  },
-  {
     path: '/login',
     exact: false,
     auth: false,
     main: ({ history }) => <LoginPage history={history}/>
+  },
+  {
+    path: '/register',
+    exact: false,
+    auth: false,
+    main: ({ history }) => <RegisterPage history={history}/>
   },
   {
     path: '/product',
