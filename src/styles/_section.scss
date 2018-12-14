@@ -3,6 +3,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  &--white {
+    background: $white_color;
+  }
 }
 
 .main {

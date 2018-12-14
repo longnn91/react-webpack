@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { login } from 'actions/authAction';
+import { register } from 'actions/userAction';
 
 export default class RegisterPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
+      email: '',
       password: '',
+      confirmPassword: '',
       error: null
     }
     this.handleChange = this.handleChange.bind(this);
@@ -15,24 +17,23 @@ export default class RegisterPage extends Component {
 
   handleChange(e) {
     const {name, value} = e.target;
-    this.setState(
-      {[name]: value, error: null});
+    this.setState({[name]: value, error: null});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-      const { username, password } = this.state;
-      if (username && password) {
-        login({username, password}, this.props.history).catch(err => {
-          if (err.response && err.response.status === 403) {
-              this.setState({ error: err.response.data.msg });
-          }
-        });
-      }
+      const { username, email, password, confirmPassword } = this.state;
+      register(this.state).then((response) => {
+        this.props.history.push('/register-success');
+      }).catch((error) => {
+        this.setState({error: error.message})
+      });
   }
 
   render(){
-    const { username, password, error } = this.state;
+    const { username, email, password, confirmPassword, error } = this.state;
+    let passwordNotMathError = password && confirmPassword && password !== confirmPassword;
+    let disableSubmit = passwordNotMathError;
     return (
       <div className="main main--center">
           <section className="section-login form">
@@ -42,13 +43,19 @@ export default class RegisterPage extends Component {
                 <span className="form__header__close-button"></span>
               </div>
               <div className="form__main">
+                <p className="form__input-label">Username</p>
+                <input type="text" className="form__input" placeholder="Please input name" name="username" value={username} onChange={this.handleChange} />
                 <p className="form__input-label">Email</p>
-                <input type="text" className="form__input" placeholder="Please input email" name="username" value={username} onChange={this.handleChange} />
+                <input type="text" className="form__input" placeholder="Please input email" name="email" value={email} onChange={this.handleChange} />
                 <p className="form__input-label">Password</p>
-                <input type="password" className="form__input" placeholder="Please input password" name="password" value={password} onChange={this.handleChange} />
+                <input type="password" className="form__input fz-18" placeholder="Please input password" name="password" value={password} onChange={this.handleChange} />
                 <p className="form__input-label">Confirm password</p>
-                <input type="password" className="form__input" placeholder="Please input confirm password" name="confirm_password" value={password} onChange={this.handleChange} />
-                <input type="submit" className="form__button mgt-30" value="Register" />
+                <input type="password" className="form__input fz-18" placeholder="Please input confirm password" name="confirmPassword" value={confirmPassword} onChange={this.handleChange} />
+                { passwordNotMathError && <label className="form__error">Password does not match together!</label>}
+                <label className="form__error">{error}</label>
+                <button disabled={disableSubmit ? 'disabled' : ''} className="form__button mgt-10">
+                  <i className="fa fa-spinner fa-spin fz-20"></i> Register
+                </button>
               </div>
             </form>
           </section>

@@ -4,6 +4,7 @@ import LoginPage from './LoginPage';
 import ProductPage from './ProductPage';
 import NotFoundPage from './NotFoundPage';
 import RegisterPage from './RegisterPage';
+import MessagePage from './MessagePage';
 
 export {
   DashboardPage,
@@ -11,5 +12,6 @@ export {
   NotFoundPage,
   ProductPage,
   LoginPage,
-  RegisterPage
+  RegisterPage,
+  MessagePage
  };

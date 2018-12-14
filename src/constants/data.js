@@ -18,3 +18,23 @@ export const headerMenu = [
     auth: false
   }
 ];
+
+export const messageData = [
+  {
+    path: '/register-success',
+    title: 'Register successfully!',
+    message: 'Please checkout your registered email to verify your account.',
+    button: [
+      {
+        name: 'Back',
+        className: 'button button--medium button--gray mgr-5',
+        redirectTo: '/register'
+      },
+      {
+        name: 'Login',
+        className: 'button button--medium button--green mgl-5',
+        redirectTo: '/login'
+      }
+    ]
+  }
+]

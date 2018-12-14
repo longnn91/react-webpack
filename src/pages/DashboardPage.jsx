@@ -12,9 +12,17 @@ export default class DashboardPage extends Component {
   constructor(props) {
     super(props);
   }
+
+  getWrapperClass() {
+    if (['/register-success'].indexOf(window.location.pathname) !== -1) {
+      return "wrapper wrapper--white";
+    }
+    return "wrapper";
+  }
+
   render() {
     return (
-      <div className="wrapper">
+      <div className={this.getWrapperClass()}>
           <Header/>
             <div className="main main--center">
               <Switch>
