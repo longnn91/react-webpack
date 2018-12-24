@@ -59,6 +59,7 @@ module.exports = {
     contentBase: '/dist',
     historyApiFallback: true,
     host: 'demo-react.com',
-    port: 3001
+    port: 3001,
+    https: true
   }
 }
