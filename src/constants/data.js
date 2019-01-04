@@ -1,5 +1,11 @@
 export const headerMenu = [
   {
+    name: 'HOME',
+    to: '/',
+    exact: false,
+    auth: true
+  },
+  {
     name: 'PRODUCTS',
     to: '/product',
     exact: false,

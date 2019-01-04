@@ -25,7 +25,7 @@ export default class HomePage extends Component {
     e.preventDefault();
       const { username, password } = this.state;
       if (username && password) {
-        login({username, password}, this.props.history).catch(err => {
+        login({username, password, type: 'origin'}, this.props.history).catch(err => {
           if (err.response && err.response.status === 403) {
               this.setState({ error: err.response.data.msg });
           }

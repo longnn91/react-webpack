@@ -23,6 +23,7 @@
     "react-dom": "^16.2.0",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^4.0.0",
+    "react-i18nify": "^1.11.14",
     "react-modal": "^3.7.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
